@@ -1,0 +1,73 @@
+import 'dart:ui';
+
+import '../../configs/colors.dart';
+import 'pokemon_props.dart';
+import 'pokemon_types.dart';
+
+class Pokemon {
+  final String number;
+  final String name;
+  final String description;
+  final List<PokemonTypes> types;
+  final String image;
+  final String height;
+  final String weight;
+  final String genera;
+  final List<PokemonTypes> eggGroups;
+  final PokemonGender gender;
+  final PokemonStats stats;
+
+  Pokemon({
+    this.number,
+    this.name,
+    this.description,
+    this.types,
+    this.image,
+    this.height,
+    this.weight,
+    this.genera,
+    this.eggGroups,
+    this.gender,
+    this.stats,
+  });
+}
+
+extension PokemonX on Pokemon {
+  Color get color {
+    if (types.isEmpty) {
+      return AppColors.lightBlue;
+    }
+
+    switch (types[0]) {
+      case PokemonTypes.grass:
+      case PokemonTypes.bug:
+        return AppColors.lightTeal;
+
+      case PokemonTypes.fire:
+        return AppColors.lightRed;
+
+      case PokemonTypes.water:
+      case PokemonTypes.fighting:
+      case PokemonTypes.normal:
+        return AppColors.lightBlue;
+
+      case PokemonTypes.electric:
+      case PokemonTypes.psychic:
+        return AppColors.lightYellow;
+
+      case PokemonTypes.poison:
+      case PokemonTypes.ghost:
+        return AppColors.lightPurple;
+
+      case PokemonTypes.ground:
+      case PokemonTypes.rock:
+        return AppColors.lightBrown;
+
+      case PokemonTypes.dark:
+        return AppColors.black;
+
+      default:
+        return AppColors.lightBlue;
+    }
+  }
+}
